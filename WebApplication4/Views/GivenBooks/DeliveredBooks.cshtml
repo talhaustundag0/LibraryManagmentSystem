@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Teslim Alınan Kitaplar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    DateTime deliveredDate;
+
+}
+@using LibraryManagment.Data.Model
+@model List<GivenBooks>
+
+<div class="main-title d-flex align-items-center justify-content-between mb-3">
+    <div class="title">
+        <h2>Teslim Alınan Kitaplar</h2>
+    </div>
+</div>
+
+<style>
+    .dataTables_wrapper {
+        width: 95% !important;
+    }
+    .deliveredbooks{
+        color:orangered;
+    }
+</style>
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Kitap Adı</th>
+            <th>Üye Adı</th>
+            <th>Aldığı Tarih</th>
+            <th>Getireceği Tarih</th>
+            <th>Getirdiği Tarih</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var givenbooks in Model)
+        {
+            deliveredDate = Convert.ToDateTime(givenbooks.Delivered);
+        <tr>
+            <td>@givenbooks.Book.name</td>
+            <td>@givenbooks.Member.Name @givenbooks.Member.Lastname</td>
+            <td>@givenbooks.Receiving.ToString("dd MMMM yyyy")</td>
+            <td>@givenbooks.Delivery.ToString("dd MMMM yyyy")</td>
+            <td>@deliveredDate.ToString("dd MMMM yyyy")</td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
+

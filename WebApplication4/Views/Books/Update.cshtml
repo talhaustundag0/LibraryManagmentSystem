@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "Kitap Güncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int sayac = 0;
+}
+@using LibraryManagment.Data.Model
+@model Books
+<style>
+    .form-wrapper {
+        width: 95%;
+    }
+
+    .form-group {
+        width: 50%;
+    }
+
+    label {
+        font-weight: 400;
+        font-size: 18px;
+    }
+
+    .ctg-text {
+        background-color: aquamarine;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
+<div class="form-wrapper">
+    <form class="form-horizontal d-flex flex-column">
+        <div class="row">
+            <div class="col-8 form-group mb-3">
+                <label>Kategori Seçiniz</label>
+                <select id="categories" class="form-control mt-1">
+                    @foreach (var category in ViewBag.Categories)
+                    {
+                        sayac = 0;
+                        foreach (var addedCategories in Model.Categories)
+                        {
+                            if (category.ID != addedCategories.ID)
+                            {
+                                if (sayac < Model.Categories.Count - 1)
+                                {
+                                    sayac++;
+                                }
+                                else
+                                {
+                                    <option data-id="@category.ID">@category.CategoryName</option>
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div id="addedCategories" class="col-12 mb-3 form-group d-flex">
+            @foreach (var category in Model.Categories)
+            {
+                <div id="@category.ID" class="col-2 ctg-text" style="margin-right:5px;">@category.CategoryName</div>
+            }
+        </div>
+
+        <div class="form-group mb-3">
+            <label>Yazar Seçiniz</label>
+            <select id="writers" class="form-control mt-1">
+                @foreach (var writer in ViewBag.Writers)
+                {
+                    if (Model.Writer.ID == writer.ID)
+                    {
+                        <option data-id="@writer.ID" selected>@writer.Name</option>
+                    }
+                    <option data-id="@writer.ID">@writer.Name</option>
+                }
+            </select>
+        </div>
+        <div class="col-12 form-group mb-3">
+            <label>Kitap Adı</label>
+            <input class="form-control mt-1" type="text" id="bookName" value="@Model.name" placeholder="Kitap Adını Giriniz" />
+        </div>
+        <div class="col-12 form-group mb-3">
+            <label>Kitap Adeti</label>
+            <input class="form-control mt-1" type="text" id="bookPiece" value="@Model.piece" placeholder="Kitap Adetini Giriniz" />
+        </div>
+        <div class="col-12 form-group mt-3">
+            <input type="button" id="updateBook" data-id="@Model.ID" class="btn btn-primary" value="Güncelle" />
+        </div>
+    </form>
+</div>
+

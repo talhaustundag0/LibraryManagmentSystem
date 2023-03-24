@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Kitaplar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+@using LibraryManagment.Data.Model
+@model List<Books>
+
+<div class="main-title d-flex align-items-center justify-content-between mb-3">
+    <div class="title">
+        <h2>Kitaplar</h2>
+    </div>
+    <div class="btn-wrapper mx-2">
+        <a href="@Url.Action("Add","Books")" id="kitapEkle" class="btn btn-primary">Kitap Ekle</a>
+    </div>
+</div>
+
+<style>
+    .dataTables_wrapper {
+        width: 95% !important;
+    }
+    .books{
+        color:orangered;
+    }
+</style>
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Kitap Adı</th>
+            <th>Kitap Adeti</th>
+            <th>Yazar</th>
+            <th>Kategori</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var books in Model)
+        {
+            string categories = "";
+        <tr>
+            <td>@books.name</td>
+            <td>@books.piece</td>
+            <td>@books.Writer.Name</td>
+            <td>
+                @foreach (var category in books.Categories)
+                {
+                    categories += category.CategoryName + ", ";
+                }
+                @categories
+            </td>
+            <td><a href="@Url.Action("Update","Books", new { booksId=books.ID })" class="update-books btn btn-success">Güncelle</a></td>
+            <td><button class="delete-books btn btn-danger" value="@books.ID">Sil</button></td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
+

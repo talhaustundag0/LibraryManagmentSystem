@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&family=Poppins:wght@200;300;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins";
+}
+
+
+
+.full-container{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    background-color: #f8f8f8;
+}
+
+.sidebar{
+    min-width: 300px;
+    max-width: 300px;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: #15283c;
+    z-index:3;
+}
+
+.sidebar-header{
+    width: 100%;
+    height: 100px;
+    background-color: #214162;
+    border-bottom: solid 3px orangered;
+}
+
+.sidebar-header .user-profile{
+    width: 300px;
+}
+
+.user-profile .user-img img{
+    width: 70px;
+    height: 70px;
+}
+
+.user-info{
+    margin-top: 20px;
+}
+
+.user-info h6{
+    font-family: "Kanit";
+    font-size: 20px;
+    color: white;
+    font-weight: 500;
+}
+
+.user-info p{
+    font-family: "Kanit";
+    font-size: 14px;
+    color: yellowgreen;
+}
+
+.list-main{
+    margin:0;
+    padding: 0;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+li{
+    width: 100%;
+    height: 50px;
+    list-style: none;
+    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+li a{
+    font-family: "Poppins";
+    font-weight: 300;
+    text-decoration: none;
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+li a:hover{
+    color:orangered;
+    transition: 0.3s ease;
+}
+
+li i{
+    margin-left: 12px;
+}
+
+li span{
+    margin-left: 18px;
+    margin-top: 2px;
+}
+
+.topbar{
+    position: fixed;
+    padding-left: 300px;
+    width: 100%;
+    height: 98px;
+    background-color: #15283c;
+    z-index: 2;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; 
+}
+
+.title h1{
+    font-family: "Kanit";
+    font-size: 38px;
+    color: white;
+    letter-spacing: 5px;
+}
+
+.content{
+    width: 100%;
+    height: 100%;
+    padding-left: 350px;
+    padding-top: 120px;
+}
+
+.content .main-title{
+    width: 95%;
+    height: 55px;
+    background-color: rgb(231, 231, 231);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.content .title h2{
+    font-family: "Kanit";
+    margin-left: 15px;
+    margin-top: 5px;
+    font-size: 24px;
+}
+
+.btn-custom button {
+    margin-right: 20px;
+}
+
+.btn-wrapper{
+    margin-right:10px;
+}
+
+.form-wrapper {
+    width: 95%;
+}
+
+.form-group {
+    width: 50%;
+}
+
+label {
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.ctg-text {
+    background-color: aquamarine;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.active{
+    color:orangered;
+}

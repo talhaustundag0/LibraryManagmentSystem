@@ -1,0 +1,10 @@
+C:\Users\real_\source\repos\WebApplication4\LibraryManagment.Data.Model\bin\Debug\LibraryManagment.Data.Model.dll
+C:\Users\real_\source\repos\WebApplication4\LibraryManagment.Data.Model\bin\Debug\LibraryManagment.Data.Model.pdb
+C:\Users\real_\source\repos\WebApplication4\LibraryManagment.Data.Model\bin\Debug\Microsoft.Analytics.Interfaces.dll
+C:\Users\real_\source\repos\WebApplication4\LibraryManagment.Data.Model\bin\Debug\Microsoft.Analytics.Interfaces.Streaming.dll
+C:\Users\real_\source\repos\WebApplication4\LibraryManagment.Data.Model\bin\Debug\Microsoft.Analytics.Types.dll
+C:\Users\real_\source\repos\WebApplication4\LibraryManagment.Data.Model\obj\Debug\LibraryManagment.Data.Model.csproj.AssemblyReference.cache
+C:\Users\real_\source\repos\WebApplication4\LibraryManagment.Data.Model\obj\Debug\LibraryManagment.Data.Model.csproj.CoreCompileInputs.cache
+C:\Users\real_\source\repos\WebApplication4\LibraryManagment.Data.Model\obj\Debug\LibraryManagment.Data.Model.csproj.CopyComplete
+C:\Users\real_\source\repos\WebApplication4\LibraryManagment.Data.Model\obj\Debug\LibraryManagment.Data.Model.dll
+C:\Users\real_\source\repos\WebApplication4\LibraryManagment.Data.Model\obj\Debug\LibraryManagment.Data.Model.pdb

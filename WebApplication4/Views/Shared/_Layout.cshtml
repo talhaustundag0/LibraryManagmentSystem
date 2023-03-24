@@ -1,0 +1,154 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Kütüphane Yönetimi</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="~/Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Link Local CSS Documents-->
+    <link href="~/Assets/css/layout.css" rel="stylesheet" />
+    <link href="~/Assets/css/colors.css" rel="stylesheet" />
+    <!-- Link Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+          integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="~/Assets/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Assets/css/sweetalert2.min.css" rel="stylesheet" />
+    <style>
+        tfoot input {
+            width: 100%;
+            padding: 3px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="topbar d-flex align-items-center justify-content-center">
+            <div class="title">
+                <h1>Library Managment System</h1>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="full-container">
+            <nav class="sidebar">
+                <div class="sidebar-header d-flex align-items-center justify-content-center">
+                    <div class="user-profile row justify-content-center">
+                        <div class="col-4 user-img d-flex align-items-center justify-content-center">
+                            <img src="~/Assets/images/user-icon.png" alt="">
+                        </div>
+                        <div class="col-8 user-info d-flex flex-column align-items-start justify-content-center">
+                           <h6>@Request.Cookies["member"]["Name"] @Request.Cookies["member"]["LastName"]</h6>
+                            <p>Admin</p>
+                        </div>
+                    </div>
+                </div>
+                <ul class="list-main">
+                    <li>
+                        <a class="home" href="">
+                            <i><img src="~/Assets/images/icons/house.png" alt="" /></i>
+                            <span>Ana Sayfa</span>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a class="books" href="/Books">
+                            <i><img src="~/Assets/images/icons/book-stack.png" alt="" /></i>
+                            <span>Kitaplar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="category" href="/Category">
+                            <i><img src="~/Assets/images/icons/options.png" alt="" /></i>
+                            <span>Kategoriler</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="writer" href="/Writer">
+                            <i><img src="~/Assets/images/icons/writer.png" alt="" /></i>
+                            <span>Yazarlar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="members" href="/Members">
+                            <i><img src="~/Assets/images/icons/man.png" alt="" /></i>
+                            <span>Üyeler</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="givenbooks" href="/GivenBooks">
+                            <i><img src="~/Assets/images/icons/read.png" alt="" /></i>
+                            <span>Verilen Kitaplar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="deliveredbooks" href="/GivenBooks/DeliveredBooks">
+                            <i><img src="~/Assets/images/icons/book.png" alt="" /></i>
+                            <span>Alınan Kitaplar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="logout" href="/Login/Logout">
+                            <i><img src="~/Assets/images/icons/logout.png" alt="" /></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="content">
+            @RenderBody()
+            
+        </div>
+    </main>
+    <footer>
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="~/Bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Bootstrap/js/bootstrap.js"></script>
+    <script src="~/Bootstrap/js/bootstrap.esm.min.js"></script>
+    <script src="~/Bootstrap/js/bootstrap.esm.js"></script>
+    <script src="~/Bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="~/Assets/Scripts/jquery-3.5.1.js"></script>
+    <script src="~/Assets/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/Scripts/sweetalert2.min.js"></script>
+    <script src="~/Assets/Scripts/main.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Setup - add a text input to each footer cell
+            $('#example tfoot th').each(function () {
+                var title = $(this).text();
+                $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+            });
+
+            // DataTable
+            var table = $('#example').DataTable({
+                initComplete: function () {
+                    // Apply the search
+                    this.api()
+                        .columns()
+                        .every(function () {
+                            var that = this;
+
+                            $('input', this.footer()).on('keyup change clear', function () {
+                                if (that.search() !== this.value) {
+                                    that.search(this.value).draw();
+                                }
+                            });
+                        });
+                },
+            });
+        });
+
+    </script>
+</body>
+
+</html>

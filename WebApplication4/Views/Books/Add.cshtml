@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Kitap Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .books {
+        color: orangered;
+    }
+</style>
+
+<div class="form-wrapper">
+    <form class="form-horizontal d-flex flex-column">
+        <div class="row">
+            <div class="col-8 form-group mb-3">
+                <label>Kategori Seçiniz</label>
+                <select id="categories" class="form-control mt-1">
+                    @foreach (var category in ViewBag.Categories)
+                    {
+                        <option data-id="@category.ID">@category.CategoryName</option>
+                    }
+                </select>
+            </div>
+            <div class="col-4 d-flex align-items-center mt-3">
+                <input type="button" id="addCategory" class="btn btn-primary" value="Ekle"/> 
+            </div>
+        </div>
+        <div id="addedCategories" class="col-12 mb-3 form-group d-flex">
+
+        </div>
+        
+        <div class="form-group mb-3">
+            <label>Yazar Seçiniz</label>
+            <select id="writers" class="form-control mt-1">
+                    @foreach (var writer in ViewBag.Writers)
+                    {
+                        <option data-id="@writer.ID">@writer.Name</option>
+                    }
+            </select>
+        </div>
+        <div class="col-12 form-group mb-3">
+            <label>Kitap Adı</label>
+                <input class="form-control mt-1" type="text" id="bookName" value="" placeholder="Kitap Adını Giriniz" />
+        </div>
+        <div class="col-12 form-group mb-3">
+            <label>Kitap Adeti</label>
+                <input class="form-control mt-1" type="text" id="bookPiece" value="" placeholder="Kitap Adetini Giriniz"/>
+        </div>
+        <div class="col-12 form-group mt-3">
+            <input type="button" id="saveBook" class="btn btn-primary" value="Kaydet"/>
+        </div>
+    </form>
+</div>
+

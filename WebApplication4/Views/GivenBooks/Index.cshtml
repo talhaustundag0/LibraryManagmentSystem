@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Verilen Kitaplar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@using LibraryManagment.Data.Model
+@model List<GivenBooks>
+
+<div class="main-title d-flex align-items-center justify-content-between mb-3">
+    <div class="title">
+        <h2>Verilen Kitaplar</h2>
+    </div>
+    <div class="btn-wrapper mx-2">
+        <a href="/GivenBooks/GiveBooks" id="kitapVer" class="btn btn-primary">Kitap Ver</a>
+    </div>
+</div>
+
+<style>
+    .dataTables_wrapper {
+        width: 95% !important;
+    }
+    .givenbooks{
+        color:orangered;
+    }
+</style>
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Kitap Adı</th>
+            <th>Üye Adı</th>
+            <th>Aldığı Tarih</th>
+            <th>Getireceği Tarih</th>
+            <th>Güncelle</th>
+            <th>Teslim</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var givenbooks in Model)
+        {
+        <tr>
+            <td>@givenbooks.Book.name</td>
+            <td>@givenbooks.Member.Name @givenbooks.Member.Lastname</td>
+            <td>@givenbooks.Receiving.ToString("dd MMMM yyyy")</td>
+            <td>@givenbooks.Delivery.ToString("dd MMMM yyyy")</td>
+            <td><a href="@Url.Action("UpdateGivenBooks","GivenBooks", new { givenbooksId= givenbooks.ID })" class="btn btn-primary">Güncelle</a></td>
+            <td><button class="deliveredBtn btn btn-success" value="@givenbooks.ID">Kitabı Teslim Al</button></td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
+

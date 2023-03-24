@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Yazarlar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using LibraryManagment.Data.Model
+@model List<Writer>
+
+<div class="main-title d-flex align-items-center justify-content-between mb-3">
+    <div class="title">
+        <h2>Yazarlar</h2>
+    </div>
+    <div class="btn-wrapper mx-2">
+        <button id="yazarEkle" class="ctgAdd btn btn-primary">Yazar Ekle</button>
+    </div>
+</div>
+
+<style>
+    .dataTables_wrapper {
+        width: 95% !important;
+    }
+    .writer{
+        color:orangered;
+    }
+</style>
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Yazar Adı</th>
+            <th>Kitap Adeti</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var wrt in Model)
+        {
+            <tr>
+                <td>@wrt.Name</td>
+                <td>@wrt.Books.Count()</td>
+                <td><button class="update-wrt btn btn-success" value="@wrt.ID">Güncelle</button></td>
+                <td><button class="delete-wrt btn btn-danger" value="@wrt.ID">Sil</button></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+

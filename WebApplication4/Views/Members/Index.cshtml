@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Üyeler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using LibraryManagment.Data.Model
+@model List<Members>
+
+<div class="main-title d-flex align-items-center justify-content-between mb-3">
+    <div class="title">
+        <h2>Üyeler</h2>
+    </div>
+    <div class="mx-2">
+        <a href="@Url.Action("Add","Members")" class="btn btn-primary">Üye Ekle</a>
+    </div>
+</div>
+
+<style>
+    .dataTables_wrapper {
+        width: 95% !important;
+    }
+    .members{
+        color:orangered;
+    }
+</style>
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>TC</th>
+            <th>Telefon</th>
+            <th>Kayıt Tarihi</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var member in Model)
+            {
+                <tr>
+                    <td>@member.Name</td>
+                    <td>@member.Lastname</td>
+                    <td>@member.TCKNO</td>
+                    <td>@member.Phone</td>
+                    <td>@member.DORegistration.ToString("dd MMMM yyyy")</td>
+                    <td><a href="@Url.Action("Update","Members", new {memberId=member.ID })" class="update-member btn btn-success">Güncelle</a></td>
+                    <td><button class="delete-member btn btn-danger" value="@member.ID">Sil</button></td>
+                </tr>
+            }
+
+    </tbody>
+</table>
+
+

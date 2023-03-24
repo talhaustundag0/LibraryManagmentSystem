@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Verilen Kitabı Güncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using LibraryManagment.Data.Model
+@model GivenBooks 
+
+<style>
+    .givenbooks {
+        color: orangered;
+    }
+</style>
+
+<div class="form-wrapper">
+    <form class="form-horizontal d-flex flex-column">
+        <div class="row">
+            <div class="col-8 form-group mb-3">
+                <label>Üye Seçiniz</label>
+                <select id="members" class="form-control mt-1">
+                    @foreach (var member in ViewBag.Members)
+                    {
+                        if (member.ID == Model.ID)
+                        {
+                            <option data-id="@member.ID" selected>@member.Name</option>
+                        }
+                        else
+                        {
+                            <option data-id="@member.ID">@member.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div id="addedCategories" class="col-12 mb-3 form-group d-flex">
+
+        </div>
+
+        <div class="form-group mb-3">
+            <label>Kitap Seçiniz</label>
+            <select id="books" class="form-control mt-1">
+                @foreach (var book in ViewBag.Books)
+                {
+                    if (book.ID == Model.BookID)
+                    {
+                        <option data-id="@book.ID" selected>@book.name</option>
+                    }
+                    else
+                    {
+                        <option data-id="@book.ID">@book.name</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="col-12 form-group mb-3">
+            <label>Getireceği Tarih</label>
+            <input class="form-control mt-1" id="DeliveryDate" min="@DateTime.Now.ToString("yyyy-MM-dd")" type="date" value="@Model.Receiving.ToString("yyyy-MM-dd")" />
+        </div>
+        <div class="col-12 form-group mt-3">
+            <input type="button" id="givenBooksUpdate" data-id="@Model.ID" class="btn btn-primary" value="Kaydet" />
+        </div>
+    </form>
+</div>
+

@@ -45,14 +45,14 @@ namespace LibraryManagmentSystem.Controllers
             }
             catch { }
 
-            // Cookie ekleme işlemi
+            // Cookie ve Session ekleme işlemi
             if (member != null)
             {
                 HttpCookie cookie = new HttpCookie("member");
-                cookie.Values.Add("Id", member.ID.ToString());
                 cookie.Values.Add("Name", member.Name.ToString());
                 cookie.Values.Add("LastName", member.Lastname.ToString());
 
+                Session.Add("Id", member.ID.ToString());
                 //Beni hatırla checkbox'ı aktif ise cookie'yi 1 gün saklıyoruz
                 if (remember) { cookie.Expires = DateTime.Now.AddDays(1); }
 

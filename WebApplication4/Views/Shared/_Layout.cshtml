@@ -45,18 +45,11 @@
                         </div>
                         <div class="col-8 user-info d-flex flex-column align-items-start justify-content-center">
                            <h6>@Request.Cookies["member"]["Name"] @Request.Cookies["member"]["LastName"]</h6>
-                            <p>Admin</p>
+                            <p>Admin(@Session["Id"])</p>
                         </div>
                     </div>
                 </div>
                 <ul class="list-main">
-                    <li>
-                        <a class="home" href="">
-                            <i><img src="~/Assets/images/icons/house.png" alt="" /></i>
-                            <span>Ana Sayfa</span>
-
-                        </a>
-                    </li>
                     <li>
                         <a class="books" href="/Books">
                             <i><img src="~/Assets/images/icons/book-stack.png" alt="" /></i>

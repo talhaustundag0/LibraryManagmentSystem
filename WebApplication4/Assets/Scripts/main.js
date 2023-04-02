@@ -397,6 +397,7 @@ $(document).on("click", "#updateBook", function () {
     });
 });
 
+
 //Üye Kaydetme
 $(document).on("click", "#saveMember", function () {
     var values = {
@@ -418,6 +419,13 @@ $(document).on("click", "#saveMember", function () {
                     type: 'success',
                     title: 'Üye Eklendi',
                     text: 'İşlem Başarıyla Gerçekleşti!'
+                });
+            }
+            else if ("2") {
+                Swal.fire({
+                    type: 'error',
+                    title: 'Hatalı Veri Girişi!',
+                    text: 'TC ve Telefon Numarası 11 Haneli Olmalıdır!'
                 });
             }
             else if ("cannotNull") {

@@ -35,6 +35,14 @@ namespace LibraryManagmentSystem.Controllers
             //Gelen verilerin boş olup olmadığını kontrol ediyoruz ve oluşturduğumuz üye nesnesine değerleri atıyoruz ve veritabanına ekliyoruz
             if (!string.IsNullOrEmpty(memberName) && !string.IsNullOrEmpty(memberLastName) && !string.IsNullOrEmpty(memberTCKNO) && !string.IsNullOrEmpty(memberPhone))
             {
+                if (memberTCKNO.Length!=11)
+                {
+                    return Json("2");
+                }
+                else if (memberPhone.Length!=11)
+                {
+                    return Json("2");
+                }
                 Members member = new Members();
                 member.Name = memberName;
                 member.Lastname = memberLastName;
